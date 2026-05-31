@@ -1,0 +1,27 @@
+{
+  "name": "codex-agent-governance-skills",
+  "version": "0.1.0",
+  "title": "Codex Agent Governance Skills",
+  "description": "A reusable governance and execution-control skill pack for Codex and coding agents.",
+  "canonical_sources": [
+    "core/AGENTS.override.md",
+    "core/skills/"
+  ],
+  "wrapper_skill": "skills/agent-governance/SKILL.md",
+  "display_order": [
+    "QUICKSTART.md",
+    "SKILL_INDEX.md",
+    "core/AGENTS.override.md",
+    "core/skills/",
+    "skills/agent-governance/SKILL.md",
+    "examples/codex-project/AGENTS.md",
+    "INSTALL.md",
+    "README.md"
+  ],
+  "protected_source_policy": {
+    "core_materials_are_canonical": true,
+    "rewrite_core_materials": false,
+    "copy_validation_required": true
+  },
+  "included_skill_count": 17
+}

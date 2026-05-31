@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.log
+*.tmp
+*.bak
+credentials*
+secrets*
+private*

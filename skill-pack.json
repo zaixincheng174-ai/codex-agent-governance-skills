@@ -1,0 +1,23 @@
+{
+  "name": "agent-governance",
+  "version": "0.1.0",
+  "title": "Agent Governance Skill Pack",
+  "description": "A reusable governance skill pack for Codex and coding agents.",
+  "entrypoint": "skills/agent-governance/SKILL.md",
+  "canonical_sources": [
+    "core/AGENTS.override.md",
+    "core/skills/"
+  ],
+  "reading_order": [
+    "QUICKSTART.md",
+    "SKILL_INDEX.md",
+    "core/AGENTS.override.md",
+    "core/skills/",
+    "skills/agent-governance/SKILL.md",
+    "examples/codex-project/AGENTS.md",
+    "INSTALL.md"
+  ],
+  "distribution": {
+    "zip": "dist/codex-agent-governance-skills-v0.1.0.zip"
+  }
+}
