@@ -197,6 +197,8 @@ https://github.com/zaixincheng174-ai/codex-agent-governance-skills
 
 - X: post from the user's logged-in account; do not automate spam replies.
 - Reddit: read current subreddit rules first; use self-promotion threads where required.
+- `r/LLMDevs`: current rule-search result says free open-source project sharing is allowed without prior moderator approval; still keep the post feedback-oriented.
+- `r/ChatGPTCoding`: current rule-search result surfaces recurring self-promotion threads; use that thread instead of a standalone promotional post.
 - HN: submit only after the demo file exists and repo first screen is fixed; do not ask anyone to upvote.
 
 ## Community Targeting
