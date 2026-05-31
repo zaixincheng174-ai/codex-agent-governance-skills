@@ -26,6 +26,14 @@ This repository is intentionally shallow so the useful files are visible quickly
 - `docs/usage-notes.md`
 - `docs/validation-report.md`
 - `docs/post-audit.md`
+- `docs/demo-false-pass.md`
+- `docs/launch-kit.md`
+- `docs/launch-tracker.md`
+
+## Launch assets
+
+- `assets/social-preview.png` - share-card image for GitHub/X/HN.
+- `assets/social-preview.svg` - editable source for the share-card image.
 
 ## Example
 

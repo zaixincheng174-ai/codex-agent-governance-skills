@@ -4,6 +4,14 @@ This pack is intentionally simple: the canonical materials are plain files and f
 
 ## Manual install
 
+Back up your current Codex governance files:
+
+```sh
+mkdir -p ~/.codex/backups
+test -f ~/.codex/AGENTS.override.md && cp ~/.codex/AGENTS.override.md ~/.codex/backups/AGENTS.override.$(date +%Y%m%d-%H%M%S).md
+test -d ~/.codex/skills && cp -R ~/.codex/skills ~/.codex/backups/skills.$(date +%Y%m%d-%H%M%S)
+```
+
 Copy the governance override:
 
 ```sh
@@ -16,6 +24,8 @@ Copy or sync the included skills:
 mkdir -p ~/.codex/skills
 cp -R core/skills/* ~/.codex/skills/
 ```
+
+Restart Codex after copying. Some running sessions load skills at startup and will not see new or replaced skill files until restart.
 
 Use the wrapper skill as the public entrypoint:
 

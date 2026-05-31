@@ -20,6 +20,7 @@ The ZIP includes:
 - `skills/`
 - `examples/`
 - `docs/`
+- `assets/`
 - `LICENSE`
 - `CHANGELOG.md`
 

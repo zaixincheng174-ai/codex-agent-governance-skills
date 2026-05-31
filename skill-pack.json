@@ -2,7 +2,7 @@
   "name": "agent-governance",
   "version": "0.1.0",
   "title": "Agent Governance Skill Pack",
-  "description": "A reusable governance skill pack for Codex and coding agents.",
+  "description": "A Codex governance skill pack for stopping scope drift, weak closeouts, and false PASS claims.",
   "entrypoint": "skills/agent-governance/SKILL.md",
   "canonical_sources": [
     "core/AGENTS.override.md",
@@ -15,7 +15,8 @@
     "core/skills/",
     "skills/agent-governance/SKILL.md",
     "examples/codex-project/AGENTS.md",
-    "INSTALL.md"
+    "INSTALL.md",
+    "docs/demo-false-pass.md"
   ],
   "distribution": {
     "zip": "dist/codex-agent-governance-skills-v0.1.0.zip"

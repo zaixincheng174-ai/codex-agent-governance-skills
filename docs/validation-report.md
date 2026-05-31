@@ -1,10 +1,10 @@
 # Validation Report
 
-Validation date: 2026-05-30
+Validation date: 2026-05-31
 
 ## Summary
 
-All required packaging checks passed. Broad sensitive-term matches were reviewed as policy text or non-secret variable references; no high-confidence secret values were found.
+All required packaging and launch-readiness checks passed. Broad sensitive-term matches were reviewed as policy text or non-secret variable references; no high-confidence secret values were found.
 
 ## Commands and results
 
@@ -13,6 +13,7 @@ All required packaging checks passed. Broad sensitive-term matches were reviewed
 | Protected override hash | `shasum -a 256 ~/.codex/AGENTS.override.md core/AGENTS.override.md` | PASS |
 | Protected skill manifest diff | `diff -u <source manifest> <copied manifest>` | PASS: no diff |
 | README canonical links | `grep -q 'core/AGENTS.override.md' README.md && grep -q 'core/skills/' README.md && grep -q 'skills/agent-governance/SKILL.md' README.md` | PASS |
+| README launch links | `grep -q 'docs/demo-false-pass.md' README.md && grep -q 'assets/social-preview.png' README.md` | PASS |
 | QUICKSTART canonical links | `grep -q 'core/AGENTS.override.md' QUICKSTART.md && grep -q 'core/skills/' QUICKSTART.md` | PASS |
 | Required docs and wrapper | `test -f INSTALL.md && test -f SKILL_INDEX.md && test -f skills/agent-governance/SKILL.md` | PASS |
 | Root metadata | `test -f manifest.json && test -f skill-pack.json` | PASS |
@@ -21,13 +22,14 @@ All required packaging checks passed. Broad sensitive-term matches were reviewed
 | Value-shaped secret scan | `rg -l -i '(ghp_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|PRIVATE) KEY-----|client_secret[[:space:]]*[:=][[:space:]]*[A-Za-z0-9._-]{10,}|refresh_token[[:space:]]*[:=][[:space:]]*[A-Za-z0-9._-]{10,})' . --glob '!.git/**' --glob '!dist/**'` | PASS: no matches |
 | Broad sensitive-term scan | `rg -l -i '(OPENAI_API_KEY|ANTHROPIC_API_KEY|GITHUB_TOKEN|AWS_ACCESS_KEY|AWS_SECRET|PRIVATE KEY|BEGIN RSA|BEGIN OPENSSH|id_rsa|password|passwd|secret|token|bearer|credential|cookie|session|client_secret|refresh_token)' . --glob '!.git/**' --glob '!dist/**'` | REVIEWED: matches are governance policy text, validation text, and non-secret session variable references |
 | Assignment-shaped sensitive-term scan | `rg -n -i -o '(password|passwd|secret|token|bearer|credential|cookie|session|client_secret|refresh_token)[[:space:]]*[:=]' . --glob '!.git/**' --glob '!dist/**'` | REVIEWED: only `session=` / `SESSION=` references in Playwright helper/docs and governance text |
-| Local path/privacy scan | `rg -n '<local username or local absolute home prefix>' . --glob '!.git/**' --glob '!dist/**'` | PASS: no package matches for local absolute paths or local username |
+| Local path/privacy scan | `rg -n "$HOME" . --glob '!.git/**' --glob '!dist/**'` | PASS: no package matches for local absolute paths; public GitHub owner references are expected |
 | Shallow visibility | `find . -maxdepth 2 -type f | sort` | PASS |
 | Core file list | `find core -type f | sort` | PASS: 26 canonical copied files |
 | ZIP build | `zip -qr /tmp/codex-agent-governance-skills-v0.1.0.zip ... && mv ... dist/codex-agent-governance-skills-v0.1.0.zip` | PASS |
 | ZIP prohibited-file inspection | `unzip -Z1 dist/codex-agent-governance-skills-v0.1.0.zip | rg '(^|/)(\\.git/|\\.env($|\\.)|node_modules/|__pycache__/|\\.DS_Store$|credentials|credential|secret scan raw)'` | PASS: no prohibited entries |
-| Git diff hygiene | `git diff --check --cached` | PASS |
-| Git status scope | `git status --short` | PASS: only intended repository files staged |
+| ZIP launch assets | `unzip -Z1 dist/codex-agent-governance-skills-v0.1.0.zip | rg '^(assets/social-preview.png|docs/demo-false-pass.md|docs/launch-kit.md|docs/launch-tracker.md)$'` | PASS |
+| Git diff hygiene | `git diff --check` | PASS |
+| Git status scope | `git status --short` | PASS: only intended repository files changed |
 
 ## Source copy hashes
 
@@ -64,6 +66,7 @@ The broad scan intentionally catches governance text such as "secret", "token", 
 - Skill copy hash check: PASS
 - Secret scan: PASS
 - ZIP package: PASS
+- Launch/demo assets: PASS
 - Git diff check: PASS
 - Git status scope: PASS
 - No protected source content was modified: PASS
